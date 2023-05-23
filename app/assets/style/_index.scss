@@ -1,0 +1,835 @@
+/*    插入背景圖片    */
+.block-main {
+    height: 100vh;
+    position: fixed;
+    width: 100vw;
+    top: 0;
+    &-up {
+        height: 30vh;
+        bottom: 0;
+        position: fixed;
+        width: 100vw;
+        z-index: 99;
+    }
+}
+
+.railing {
+    &-start {
+        position: absolute;
+        top: 0;
+        left: 0;
+        max-width: 1400px;
+        width: 100%;
+        height: 100vh;
+        @include bg(start, png, center, center, no-repeat, contain);
+    }
+    &-end {
+        position: absolute;
+        top: 0;
+        left: 0;
+        max-width: 1400px;
+        width: 100%;
+        height: 100vh;
+        opacity: 0;
+        transform: scale(1.1);
+        @include bg(finish, png, center, center, no-repeat, contain);
+    }
+}
+
+@include pad {
+    .railing {
+        &-start {
+            display: none;
+        }
+        &-end {
+            display: none;
+        }
+    }
+}
+
+.bottom-bg {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    min-height: 700px;
+    z-index: 0;
+}
+
+.cloud-left {
+    height: 26%;
+    position: absolute;
+    left: 10%;
+    top: 50%;
+}
+
+.cloud-right {
+    height: 23%;
+    position: absolute;
+    top: 50%;
+    right: 10%;
+}
+
+.traffic-light {
+    &-box {
+        position: relative;
+        height: 15vh;
+        top: 50%;
+        z-index: 5;
+        width: 100%;
+        max-width: 200px;
+        margin: 0 0 0 auto;
+    }
+    &-txt {
+        color: $hightLight;
+        font-size: 28px;
+        font-weight: 700;
+        top: 0%;
+        right: 0;
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        padding-right: 28px;
+    }
+    &-frame {
+        position: absolute;
+        right: 0;
+        top: 33%;
+        width: 100%;
+        max-width: 200px;
+    }
+    &-green {
+        position: absolute;
+        right: 22%;
+        top: 52%;
+        height: 40px;
+        z-index: -1;
+    }
+    &-yellow {
+        position: absolute;
+        top: 50%;
+        right: 45.3%;
+        height: 40px;
+        z-index: -1;
+    }
+    &-red {
+        z-index: -1;
+        position: absolute;
+        top: 50%;
+        right: 69%;
+        height: 40px;
+    }
+}
+
+@include pad {
+    .cloud {
+        &-left {
+            left: 20px;
+            height: 20%;
+            top: 40%;
+        }
+        &-right {
+            right: 0;
+            height: 18%;
+            top: 40%;
+        }
+    }
+}
+
+// ---- TODO: characters ------------------------------------//
+.characters {
+    height: 100%;
+    z-index: 1000;
+    position: relative;
+    @include flex(flex-end, center);
+    &-person {
+        height: 100%;
+        object-fit: contain;
+        z-index: 99;
+    }
+    &-load {
+        position: absolute;
+        bottom: 0;
+        z-index: -1;
+        width: 63%;
+        z-index: 99;
+    }
+    &-decorate {
+        &-l {
+            position: absolute;
+            width: 10%;
+            transform: scaleX(-1) translateX(250%);
+            opacity: 0;
+            z-index: -2;
+        }
+        &-r {
+            position: absolute;
+            width: 10%;
+            transform: translateX(280%);
+            opacity: 0;
+            z-index: -2;
+        }
+    }
+    &-tree {
+        &-left {
+            position: absolute;
+            left: 7%;
+            bottom: -45px;
+            width: 28%;
+            z-index: -2;
+            opacity: 0;
+            height: 100%;  //避免擋到第四屏的hover
+        }
+        &-right {
+            position: absolute;
+            left: 68%;
+            bottom: -42px;
+            width: 30%;
+            z-index: -2;
+            opacity: 0;
+            height: 100%;
+        }
+    }
+    &-finishLine {
+        position: absolute;
+        width: 100%;
+        transform: scale(1.1) translateY(-20%);
+        opacity: 0;
+        &-l {
+            position: absolute;
+            transform: translate(3%, -55%);
+            width: 51%;
+            z-index: 10;
+        }
+        &-r {
+            position: absolute;
+            transform: translate(99%, -55%);
+            width: 51%;
+            z-index: 10;
+        }
+    }
+}
+
+@include pad {
+    .characters {
+        &-person {
+            height: 80%;
+        }
+    }
+}
+
+// ---- TODO: Section01 ------------------------------------//
+.section01,
+.section02,
+.section03,
+.section04,
+.section05,
+.section06,
+.section07,
+.sectionLast {
+    // @include flex($flex-d: column);
+    min-height: 600px;
+    height: 100vh;
+}
+
+.logo {
+    max-width: 550px;
+    margin: 20px auto 0;
+    z-index: 5;
+    left: calc(50% - 275px); //275px = 圖片寬度(550/2)
+}
+
+.title-main {
+    background-color: $hightLight;
+    border-radius: 100px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 8px 40px;
+    font-size: $h1;
+    line-height: 40px;
+    color: white;
+    max-width: 305px;
+}
+
+.job-title {
+    @include flex($jc: space-between);
+    max-width: 600px;
+    margin: 50px auto 0;
+    &-item {
+        font-size: $h5;
+        width: calc((100% - 80px) / 3);
+        @include flex($ai: center, $flex-d: column);
+    }
+    &-name {
+        text-align: center;
+        color: $primary;
+    }
+    &-num {
+        max-width: 135px;
+        background-color: $primary;
+        border-radius: 100px;
+        padding: 7px 15px;
+        margin-top: 8px;
+        color: white;
+        @include flex(center);
+    }
+    &-img {
+        width: 22px;
+        height: 22px;
+        margin-right: 12px;
+    }
+}
+
+@include pad {
+    .section01,
+    .section03,
+    .section04,
+    .section05,
+    .section06,
+    .section07,
+    .sectionLast {
+        height: 100vh !important;
+        min-height: 0;
+        padding-top: 85px !important;
+    }
+    .section02 {
+        padding-top: 100px !important;
+        min-height: 0;
+        height: 100%;
+        padding-bottom: 200px !important;
+    }
+    .section01 {
+        .logo {
+            height: auto;
+            max-width: 250px;
+            margin-bottom: 20px;
+            content: url("../images/logo.png");
+        }
+        .title-main {
+            font-size: $h7;
+            padding: 4px 16px;
+            line-height: 30px;
+        }
+        .job-title {
+            margin: 20px auto 0;
+            display: inline-block;
+            left: calc(50% - 200px);
+            @include flex($ai: center, $flex-d: column);
+            &-item {
+                margin-bottom: 15px;
+                font-size: $h7;
+            }
+            &-num {
+                font-size: $h6;
+            }
+        }
+    }
+}
+
+// ---- TODO: Section02 ------------------------------------//
+.title-sub-box {
+    @include flex(center);
+    height: 15%;
+}
+.title-sub {
+    height: 100%;
+    position: relative;
+    margin: 30px auto 0;
+    opacity: 0;
+    &-bg {
+        height: 100%;
+        z-index: 0;
+    }
+    &-l {
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translateX(-100%);
+    }
+    &-c {
+        position: absolute;
+        left: 0%;
+        top: 0;
+        width: 100%;
+    }
+    &-r {
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: translateX(100%);
+    }
+    &-txt {
+        font-size: $h3;
+        line-height: 75px;
+        color: $primary;
+        position: relative;
+        top: 10%;
+    }
+    &-content {
+        color: $secondary-dark;
+        font-size: $h6;
+        line-height: 33.6px;
+        text-align: center;
+        opacity: 0;
+    }
+}
+
+.index-card {
+    @include flex(center, space-between);
+    width: 100%;
+    margin: 40px auto 0;
+    &-item {
+        width: calc((100% - 120px) / 3);
+    }
+}
+
+.question {
+    &-title {
+        color: $hightLight;
+        font-size: $h5;
+        text-align: center;
+        line-height: 45px;
+    }
+    &-2 {
+        opacity: 0;
+    }
+}
+
+@include pad {
+    .title-sub-box {
+        margin: 0 -20px 0;
+        height: 10%;
+    }
+    .title-sub {
+        width: 100%;
+        margin: 10px auto 0;
+        &-l,
+        &-r {
+            display: none;
+        }
+        &-txt {
+            font-size: $h5;
+            line-height: 50px;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            padding-bottom: 15px;
+        }
+    }
+    .index-card {
+        @include flex($ai: center, $flex-d: column);
+        &-item {
+            width: 60%;
+        }
+    }
+    .question {
+        &-1 {
+            .question-img {
+                content: url("../images/question_1_m.png");
+            }
+        }
+        &-3 {
+            .question-img {
+                content: url("../images/question_3_m.png");
+            }
+        }
+        &-title {
+            font-size: $h7;
+            line-height: 30px;
+        }
+    }
+}
+
+// ---- TODO: Section03 ------------------------------------//
+.contestant {
+    max-width: 900px;
+    opacity: 0;
+    &-box {
+        &:hover {
+            .contestant-group {
+                .contestant-hand {
+                    opacity: 1;
+                }
+                .contestant-btn {
+                    @include bg(btn_join_h, png);
+                }
+            }
+        }
+    }
+    &-group {
+        text-align: center;
+        color: $primary;
+        font-size: $h5;
+        @include flex($ai: center, $flex-d: column);
+    }
+    &-characters {
+        display: none;
+        max-width: 30%;
+    }
+    &-hand {
+        @include bg(btn_joinHand, png, center, top, no-repeat, 45px);
+        width: 75px;
+        height: 75px;
+        opacity: 0;
+        animation: hand 0.6s infinite;
+    }
+    &-btn {
+        @include bg(btn_join, png);
+        width: 100px;
+        height: 60px;
+        margin-top: 5px;
+    }
+    &-job {
+        margin-top: 16px;
+    }
+}
+
+@keyframes hand {
+    0% {
+        background-position-y: center;
+    }
+    50% {
+        background-position-y: bottom;
+    }
+    100% {
+        background-position-y: center;
+    }
+}
+
+@include pad {
+    .contestant {
+        opacity: 1;
+        z-index: -1;
+        position: absolute;
+        left: 0;
+        transform: translateY(80%);
+        &-box {
+            opacity: 0;
+            @include flex(center, space-between);
+        }
+        .index-card-item {
+            margin-bottom: 40px;
+            &:nth-child(even) {
+                .contestant-box {
+                    @include flex(center, space-between, row-reverse);
+                }
+            }
+        }
+        &-characters {
+            display: block;
+        }
+    }
+}
+
+// ---- TODO: Section04 ------------------------------------//
+.project {
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    transform: translateY(100%);
+    &-img {
+        max-width: 230px;
+    }
+    &.index-card {
+        @include flex($flex-d: column);
+    }
+    &-group {
+        @include flex(center);
+        width: 100%;
+        margin-bottom: 50px;
+        opacity: 0;
+        position: relative;
+        z-index: 99;
+        &.row-reverse {
+            flex-direction: row-reverse;
+        }
+    }
+    &-content {
+        letter-spacing: 0.5px;
+        .hashtag:first-child {
+            margin-right: 15px;
+        }
+    }
+    &-title {
+        color: $hightLight;
+        font-size: $h3;
+    }
+    &-subtitle {
+        color: $primary;
+        font-size: $h4;
+        margin-top: 8px;
+    }
+    .hashtag {
+        display: inline-block;
+        border-radius: 60px;
+        padding: 4px 24px;
+        border: 1px solid $secondary-dark;
+        color: $secondary-dark;
+        margin: 16px 0;
+        font-size: $h6;
+        text-align: center;
+    }
+    &-detail {
+        background-color: $secondary-dark;
+        border-radius: 60px;
+        padding: 4px 15px;
+        line-height: 28px;
+        color: white;
+        text-align: center;
+        max-width: 160px;
+        font-weight: 700;
+        font-size: 16px;
+        &:hover {
+            background-color: $hightLight;
+        }
+    }
+}
+
+// ---- TODO: Section05 ------------------------------------//
+.section05 .title-sub-box{
+    display: none;
+}
+.actiity {
+    position: relative;
+    z-index: -1;
+    top: 5%;
+    .index-card {
+        @include flex(flex-start, space-between);
+    }
+    &-line {
+        max-width: 1200px;
+        width: 100%;
+        height: 100px;
+        margin: 40px auto 0;
+        opacity: 0;
+        @include bg($img-name: date_line, $img-file: png, $bg-size: contain);
+        .bg-mark {
+            width: 100%;
+            display: block;
+            height: 100px;
+            position: absolute;
+            bottom: 0px;
+            opacity: 0;
+            background-color: $secondary;
+        }
+        &-point1 {
+            position: absolute;
+            bottom: 38px;
+            left: 14%;
+            width: 32px;
+            height: 0%;
+            // max-height: 0px;
+            opacity: 0;
+            @include bg(date_weekLine, png, bottom);
+        }
+        &-point2 {
+            position: absolute;
+            bottom: 75px;
+            left: calc(50% - 16px);
+            width: 32px;
+            height: 0%;
+            // max-height: 70px;
+            opacity: 0;
+            @include bg(date_weekLine, png, bottom);
+        }
+        &-point3 {
+            position: absolute;
+            bottom: 35px;
+            right: 13%;
+            width: 32px;
+            height: 0%;
+            // max-height: 110px;
+            opacity: 0;
+            @include bg(date_weekLine, png, bottom);
+        }
+    }
+    &-group {
+        @include flex($ai: center, $flex-d: column);
+        letter-spacing: 0.5px;
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    &-hand {
+        width: 110px;
+        height: 110px;
+        @include bg($img-name: btn_hand, $img-file: gif, $bg-size: 100px);
+    }
+    &-start-img {
+        width: 110px;
+        height: 110px;
+        @include bg($img-name: date_start, $img-file: png, $bg-size: contain);
+    }
+    &-upload-img {
+        width: 110px;
+        height: 110px;
+        @include bg($img-name: date_upload, $img-file: png, $bg-size: contain);
+    }
+    &-title {
+        font-size: $h4;
+        color: $hightLight;
+        margin-top: 10px;
+    }
+    &-date {
+        border-radius: 60px;
+        font-size: $h5;
+        background-color: $primary;
+        color: white;
+        padding: 8px 24px;
+        margin-top: 20px;
+    }
+    &-subtitle {
+        font-size: $h6;
+        color: $secondary-dark;
+        text-align: center;
+        margin-top: 12px;
+        line-height: 27px;
+        span {
+            display: block;
+            font-size: 14px;
+            color: $hightLight;
+        }
+    }
+}
+
+@include pad{
+    .section05 .title-sub-box{
+        display: block;
+    }
+    .actiity{
+        transform: translateY(100%);
+        &-line{
+            display: none;
+        }
+        .index-card {
+            @include flex($ai:center, $flex-d:column);
+        }
+    }
+}
+// ---- TODO: Section06 ------------------------------------//
+.awards {
+    position: absolute;
+    top: 20%;
+    transform: translateX(6%);
+    @include flex(center, space-between);
+    &-img-left {
+        max-width: 280px;
+        opacity: 0;
+        transform: translate(-25%, 100%);
+    }
+    &-img-right {
+        max-width: 280px;
+        opacity: 0;
+        transform: translate(-25%, 75%);
+    }
+    &-title {
+        font-size: $h3;
+        color: $hightLight;
+        text-align: center;
+        opacity: 0;
+        transform: scale(1.1) translate(0, -80%);
+    }
+    &-box {
+        @include flex($jc: center);
+        position: relative;
+        margin-top: 30px;
+        opacity: 0;
+        transform: translateX(-50%);
+        &-img {
+            .trophy {
+                max-width: 330px;
+                &-light {
+                    position: absolute;
+                    top: 0;
+                    max-width: 330px;
+                    z-index: -1;
+                }
+            }
+        }
+        &-content {
+            padding-left: 60px;
+            letter-spacing: 5%;
+            &-title {
+                color: $hightLight;
+                font-size: $h4;
+                line-height: 44px;
+                &:not(:first-child) {
+                    margin-top: 24px;
+                }
+            }
+            &-txt {
+                color: $primary;
+                line-height: 28px;
+                font-size: 16px;
+                margin-top: 12px;
+            }
+            &-list {
+                list-style: decimal;
+                padding-left: 20px;
+                > span {
+                    font-size: $h5;
+                    color: $hightLight;
+                }
+            }
+        }
+    }
+}
+
+@include pad{
+    .awards{
+        width: 100%;
+        left: 0;
+        top: calc(50vh - 85px);
+        transform: translateX(0);
+        @include flex(center, center);
+        &-img-left {
+            display: none;
+        }
+        &-img-right {
+            display: none;
+        }
+    }
+}
+
+// ---- TODO: Section07 ------------------------------------//
+.sponsor {
+    max-width: 1000px;
+    &-group {
+        opacity: 0;
+        text-align: center;
+        transform: translate(0%, 10%);
+        img {
+            max-width: 250px;
+            margin: 0 auto;
+        }
+    }
+    &-tag {
+        margin-top: 12px;
+        border: 1px solid $secondary-dark;
+        color: $secondary-dark;
+        border-radius: 60px;
+        padding: 6px 24px 5px;
+        font-size: $h6;
+        line-height: 30px;
+        display: inline-block;
+    }
+}
+
+// ---- TODO: last ------------------------------------//
+.last {
+    margin: auto;
+    opacity: 0;
+    height: 100%;
+    transform: translateY(20%);
+    @include flex(center, center, column);
+    &-img {
+        max-width: 300px;
+    }
+    &-title {
+        color: $hightLight;
+        font-size: $h4;
+        line-height: 44px;
+    }
+}

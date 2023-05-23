@@ -1,0 +1,33 @@
+@font-face {
+    font-family: "GenJyuuGothic";
+    src: url("./fonts/GenJyuuGothic-Bold.woff") format("woff"), 
+        url("./fonts/GenJyuuGothic-Regular.woff") format("woff"),
+        url("./fonts/GenJyuuGothic-Bold.ttf") format("truetype"), 
+        url("./fonts/GenJyuuGothic-Regular.ttf") format("truetype");
+}
+
+$font-family-base: "GenJyuuGothic", -apple-system, "Noto Sans TC", Roboto, Arial, sans-serif;
+
+/* color-variables */
+
+$primary: #007FAB;
+$primary-light: #B0D2DE;
+$primary-dark: #003A4F;
+
+$secondary: #FFC37D; 
+$secondary-light: #FFE2A9;
+$secondary-dark: #A46039;
+
+$hightLight: #FF5136;
+$hightLight-light: #FFB5A4;
+$hightLight-dark: #CD331A;
+
+
+$h1: 32px;
+$h2: 60px;
+$h3: 44px;
+$h4: 32px;
+$h5: 24px;
+$h6: 18px;
+$h7: 20px;
+
